@@ -11,11 +11,14 @@
   },
   "devDependencies": {},
   "dependencies": {
+    "@babel/eslint-parser": "^7.19.1",
     "@strapi/plugin-graphql": "4.4.5",
-    "@strapi/strapi": "4.4.5",
-    "@strapi/plugin-users-permissions": "4.4.5",
     "@strapi/plugin-i18n": "4.4.5",
-    "better-sqlite3": "7.4.6"
+    "@strapi/plugin-users-permissions": "4.4.5",
+    "@strapi/strapi": "4.4.5",
+    "babel-eslint": "^10.1.0",
+    "better-sqlite3": "7.4.6",
+    "eslint": "^8.26.0"
   },
   "author": {
     "name": "A Strapi developer"
