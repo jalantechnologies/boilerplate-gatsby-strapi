@@ -4,35 +4,37 @@ import { Client as Styletron } from 'styletron-engine-atomic'
 import { Provider as StyletronProvider } from 'styletron-react'
 import { LightTheme, BaseProvider } from 'baseui'
 import { graphql, useStaticQuery } from 'gatsby'
-import {
-    DisplayMedium, DisplayXSmall
-  } from 'baseui/typography';
+import { DisplayMedium, DisplayXSmall } from 'baseui/typography'
 
 const engine = new Styletron()
 
 const IndexPage = () => {
-
-  const { strapiProduct } = useStaticQuery(
+  const { strapi } = useStaticQuery(
     graphql`
       query {
-        strapiProduct {
-          name
-          slug
+        strapi {
+          products {
+            data {
+              attributes {
+                name
+                slug
+              }
+            }
+          }
         }
       }
     `
   )
 
+  const name = strapi.products.data[0].attributes.name
+  const slug = strapi.products.data[0].attributes.slug
+
   return (
     <StyletronProvider value={engine}>
       <BaseProvider theme={LightTheme}>
         <SEO title="home" />
-        <DisplayMedium>
-            {strapiProduct.name}
-        </DisplayMedium>
-        <DisplayXSmall>
-            {strapiProduct.slug}
-        </DisplayXSmall>
+        <DisplayMedium>{name}</DisplayMedium>
+        <DisplayXSmall>{slug}</DisplayXSmall>
       </BaseProvider>
     </StyletronProvider>
   )

@@ -1,5 +1,5 @@
 {
-  "parser": "@babel/eslint-parser",
+  "parser": "babel-eslint",
   "extends": "eslint:recommended",
   "env": {
     "commonjs": true,
@@ -12,8 +12,7 @@
       "experimentalObjectRestSpread": true,
       "jsx": false
     },
-    "sourceType": "module",
-    "requireConfigFile": false
+    "sourceType": "module"
   },
   "globals": {
     "strapi": true
