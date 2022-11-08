@@ -17,22 +17,25 @@ const IndexPage = () => {
             data {
               attributes {
                 name
-                slug
+                description
               }
             }
           }
         }
       }
     `
-  )
+  );
+  
+  console.log(strapi);
 
-  const name = strapi.products.data[0].attributes.name
-  const slug = strapi.products.data[0].attributes.slug
+  const name = strapi.products?.data[0].attributes.name
+  const slug = strapi.products?.data[0].attributes.description
 
   return (
     <StyletronProvider value={engine}>
       <BaseProvider theme={LightTheme}>
         <SEO title="home" />
+        test
         <DisplayMedium>{name}</DisplayMedium>
         <DisplayXSmall>{slug}</DisplayXSmall>
       </BaseProvider>

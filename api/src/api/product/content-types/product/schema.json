@@ -4,7 +4,8 @@
   "info": {
     "singularName": "product",
     "pluralName": "products",
-    "displayName": "Product"
+    "displayName": "Product",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -14,9 +15,14 @@
     "name": {
       "type": "string"
     },
-    "slug": {
-      "type": "uid",
-      "targetField": "name"
+    "description": {
+      "type": "text"
+    },
+    "created": {
+      "type": "date"
+    },
+    "path": {
+      "type": "string"
     }
   }
 }
