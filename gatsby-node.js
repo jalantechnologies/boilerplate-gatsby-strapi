@@ -1,33 +1,45 @@
 const path = require(`path`)
-// Log out information after a build is done
 exports.onPostBuild = ({ reporter }) => {
   reporter.info(`Your Gatsby site has been built!`)
 }
-// Create blog pages dynamically
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
-  const blogPostTemplate = path.resolve(`src/templates/blog-post.tsx`)
   const { data } = await graphql(`
     query {
       strapi {
-        products {
+        pages {
           data {
             attributes {
-              name
+              metaTitle
               description
-              path
+              header
+              preventIndexing
+              relativeUrl
+              structuredData
+              title
+              updatedAt
+              createdAt
+              templateName
             }
           }
         }
       }
     }
   `)
-  data.strapi.products.data.forEach(edge => {
+  data.strapi.pages.data.forEach(edge => {
     createPage({
-      path: `${edge.attributes.path}`,
-      component: blogPostTemplate,
+      path: `${edge.attributes.relativeUrl}`,
+      component: path.resolve(`src/templates/${edge.attributes.templateName}.tsx`),
       context: {
-        title: edge.attributes.description,
+        metaTitle: edge.attributes.metaTitle,
+        description: edge.attributes.description,
+        header: edge.attributes.header,
+        preventIndexing: edge.attributes.preventIndexing,
+        relativeUrl: edge.attributes.relativeUrl,
+        structuredData: edge.attributes.structuredData,
+        title: edge.attributes.title,
+        updatedAt: edge.attributes.updatedAt,
+        createdAt: edge.attributes.createdAt
       },
     })
   })
