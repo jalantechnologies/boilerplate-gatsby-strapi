@@ -20,6 +20,13 @@ exports.createPages = async ({ graphql, actions }) => {
               updatedAt
               createdAt
               templateName
+              metaImage {
+                data {
+                  attributes {
+                    url
+                  }
+                }
+              }
             }
           }
         }
@@ -27,6 +34,7 @@ exports.createPages = async ({ graphql, actions }) => {
     }
   `)
   data.strapi.pages.data.forEach(edge => {
+    const imageUrl = process.env.STRAPI_API_URL + edge.attributes.metaImage.data.attributes.url
     createPage({
       path: `${edge.attributes.relativeUrl}`,
       component: path.resolve(`src/templates/${edge.attributes.templateName}.tsx`),
@@ -39,7 +47,8 @@ exports.createPages = async ({ graphql, actions }) => {
         structuredData: edge.attributes.structuredData,
         title: edge.attributes.title,
         updatedAt: edge.attributes.updatedAt,
-        createdAt: edge.attributes.createdAt
+        createdAt: edge.attributes.createdAt,
+        imageUrl
       },
     })
   })

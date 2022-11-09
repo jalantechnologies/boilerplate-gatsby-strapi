@@ -1,8 +1,18 @@
 import React from 'react'
+import { Helmet } from 'react-helmet'
 
-const BlogPost = ({ pageContext }) => {
-  const { title } = pageContext
-  return <div>{title}</div>
+const HomePage = ({ pageContext }) => {
+  const { title, imageUrl } = pageContext
+  console.log(pageContext)
+  return (
+    <div>
+      <Helmet>
+        <title>{title}</title>
+        <link rel="icon" href={imageUrl}></link>
+      </Helmet>
+      {title}
+    </div>
+  )
 }
 
-export default BlogPost
+export default HomePage
