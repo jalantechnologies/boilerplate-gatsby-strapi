@@ -26,8 +26,6 @@ const IndexPage = () => {
     `
   );
   
-  console.log(strapi);
-
   const name = strapi.products?.data[0].attributes.name
   const slug = strapi.products?.data[0].attributes.description
 
