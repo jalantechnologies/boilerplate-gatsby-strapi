@@ -7,15 +7,36 @@ import { DisplayMedium } from 'baseui/typography'
 
 const engine = new Styletron()
 
-const WelcomePageTemplate:React.FC = ({pageContext}) => {
+declare type WelcomePageTemplateProps = {
+  pageContext: any
+}
+
+const WelcomePageTemplate: React.FC<WelcomePageTemplateProps> = ({
+  pageContext,
+}) => {
   return (
     <StyletronProvider value={engine}>
       <BaseProvider theme={LightTheme}>
-        <div style={{display:'flex', justifyContent:'center', marginBottom:50, marginTop:100}} > 
-        <DisplayMedium>{pageContext.title}</DisplayMedium>
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'center',
+            marginBottom: 50,
+            marginTop: 100,
+          }}
+        >
+          <DisplayMedium>{pageContext.title}</DisplayMedium>
         </div>
-        <SEO title={pageContext.metaTitle} description={pageContext.metaDescription} metaImage={pageContext.metaImage} />
-        <Hero heroDesc={pageContext.heroDesc} heroTitle={pageContext.heroTitle} imgSrc={pageContext.heroImg} />
+        <SEO
+          title={pageContext.metaTitle}
+          description={pageContext.metaDescription}
+          metaImage={pageContext.metaImage}
+        />
+        <Hero
+          heroDesc={pageContext.heroDesc}
+          heroTitle={pageContext.heroTitle}
+          imgSrc={pageContext.heroImg}
+        />
       </BaseProvider>
     </StyletronProvider>
   )
