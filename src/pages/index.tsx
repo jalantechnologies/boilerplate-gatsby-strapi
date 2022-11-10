@@ -18,7 +18,7 @@ export default IndexPage
 export const pageQuery = graphql`
   query IndexQuery {
     strapi {
-      pages {
+      pages(filters: { relativeUrl: { eq: "home" } }) {
         data {
           attributes {
             title
