@@ -2,7 +2,7 @@ import React, { FC } from 'react'
 import { Helmet } from 'react-helmet'
 
 type SeoPropTypes = {
-  description?: string;
+  description: string;
   metaImage: string;
   title:string;
 }

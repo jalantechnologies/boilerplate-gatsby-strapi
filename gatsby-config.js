@@ -11,8 +11,8 @@ const strapiConfig = {
 
 module.exports = {
   siteMetadata: {
-    title: `boilerplate-gatsby-strapi`,
-    siteUrl: `https://www.yourdomain.tld`,
+    title: `jalantechnologies-marketing-website-boilerplate`,
+    siteUrl: `https://www.marketing-website-demo.jalantechnologies.com`,
   },
   plugins: [
     'gatsby-plugin-image',
@@ -25,7 +25,7 @@ module.exports = {
       options: {
         typeName: 'STRAPI',
         fieldName: 'strapi',
-        url: 'http://localhost:1337/graphql',
+        url: `${process.env.STRAPI_API_URL}/graphql`,
       },
     },
     {

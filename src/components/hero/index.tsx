@@ -3,7 +3,7 @@ import {Image} from '../image';
 import {
     DisplaySmall,
     ParagraphMedium
-  } from 'baseui/typography';
+} from 'baseui/typography';
   
 type HeroPropTypes = {
     imgSrc:string;

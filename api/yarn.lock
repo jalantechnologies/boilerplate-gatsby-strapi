@@ -1976,6 +1976,11 @@
     "@strapi/utils" "4.4.5"
     lodash "4.17.21"
 
+"@strapi/plugin-gatsby-preview@^0.1.0":
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/@strapi/plugin-gatsby-preview/-/plugin-gatsby-preview-0.1.0.tgz#929e13fc403e19d9561279de25eaa389b5887ad6"
+  integrity sha512-7pVbsYQFaWSwsYeTBKqHxFK4DdDOX97Ub/3m9ZlXzQpEWXxBBeRX3SZnxVC9+PmHckZXPbmXppvDyjtjLWtAcA==
+
 "@strapi/plugin-graphql@4.4.5":
   version "4.4.5"
   resolved "https://registry.yarnpkg.com/@strapi/plugin-graphql/-/plugin-graphql-4.4.5.tgz#7a76e88dfcba6896b2ad21c64c22e98f480d603f"

@@ -1,8 +1,8 @@
 {
-  "name": "api",
+  "name": "jalantechnologies-marketing-website-boilerplate",
   "private": true,
   "version": "0.1.0",
-  "description": "A Strapi application",
+  "description": "A gatsby and strapi based boilerplate for marketing websites",
   "scripts": {
     "develop": "strapi develop",
     "start": "strapi start",
@@ -11,10 +11,11 @@
   },
   "devDependencies": {},
   "dependencies": {
+    "@strapi/plugin-gatsby-preview": "^0.1.0",
     "@strapi/plugin-graphql": "4.4.5",
-    "@strapi/strapi": "4.4.5",
-    "@strapi/plugin-users-permissions": "4.4.5",
     "@strapi/plugin-i18n": "4.4.5",
+    "@strapi/plugin-users-permissions": "4.4.5",
+    "@strapi/strapi": "4.4.5",
     "better-sqlite3": "7.4.6"
   },
   "author": {
