@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_header_headers",
+  "info": {
+    "displayName": "header"
+  },
+  "options": {},
+  "attributes": {
+    "theme": {
+      "type": "enumeration",
+      "enum": [
+        "primary",
+        "secondary"
+      ]
+    },
+    "label": {
+      "type": "text"
+    },
+    "title": {
+      "type": "string"
+    }
+  }
+}

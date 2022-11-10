@@ -5,7 +5,7 @@ require('dotenv').config({
 const strapiConfig = {
   apiURL: process.env.STRAPI_API_URL,
   accessToken: process.env.STRAPI_TOKEN,
-  collectionTypes: ['product'],
+  collectionTypes: ['page'],
   singleTypes: [],
 }
 
@@ -18,16 +18,6 @@ module.exports = {
     'gatsby-plugin-image',
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-sharp',
-    'gatsby-transformer-sharp',
-    {
-      resolve: 'gatsby-source-filesystem',
-      options: {
-        name: 'images',
-        path: './src/images/',
-        ignore: [`**/\.*`],
-      },
-      __key: 'images',
-    },
     'gatsby-transformer-sharp',
     'gatsby-plugin-sharp',
     {
