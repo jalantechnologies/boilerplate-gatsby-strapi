@@ -1,0 +1,21 @@
+.title-text {
+  margin-top: 20px;
+  font-family: 'Roboto Condensed';
+}
+
+.article-card {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  width: 500px;
+  cursor: pointer;
+  margin-top: 20;
+}
+
+.boxImg {
+    transition: 0.5s all ease-in-out;
+}
+  
+.boxImg:hover {
+    transform: scale(1.1);
+}

@@ -5,26 +5,26 @@ exports.createPages = async ({ graphql, actions }) => {
   const { data } = await graphql(`
   {
     strapi {
-      pages {
+      articles {
         data {
-          id
           attributes {
-            relativeUrl
+            title
           }
+          id
         }
       }
     }
-  }   
+  }  
   `)
 
-  data.strapi.pages.data.forEach(edge => {
+  data.strapi.articles.data.forEach(edge => {
     createPage({
-      path: `${edge.attributes.relativeUrl}`,
+      path: `articles/${edge.attributes.title.split(" ").join("-").toLowerCase()}`,
       component: path.resolve(
-        'src/template/welcome-page-templates.tsx'
+        'src/template/article-page-template.tsx'
       ),
       context: {
-        pageId:edge.id,
+        articleId:edge.id,
       },
     })
   })

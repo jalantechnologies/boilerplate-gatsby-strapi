@@ -1,10 +1,10 @@
 {
   "kind": "collectionType",
-  "collectionName": "pages",
+  "collectionName": "articles",
   "info": {
-    "singularName": "page",
-    "pluralName": "pages",
-    "displayName": "page",
+    "singularName": "article",
+    "pluralName": "articles",
+    "displayName": "article",
     "description": ""
   },
   "options": {
@@ -15,28 +15,23 @@
     "title": {
       "type": "string"
     },
-    "relativeUrl": {
-      "type": "string"
+    "description": {
+      "type": "richtext"
     },
     "seo": {
-      "displayName": "seo",
       "type": "component",
-      "repeatable": false,
+      "repeatable": true,
       "component": "seo.seo"
     },
-    "publish_at": {
-      "type": "datetime"
-    },
-    "mediaImg": {
-      "type": "media",
-      "multiple": false,
-      "required": false,
+    "mediaImage": {
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ]
+      ],
+      "type": "media",
+      "multiple": false
     }
   }
 }

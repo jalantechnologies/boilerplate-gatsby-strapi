@@ -5,7 +5,7 @@ require('dotenv').config({
 const strapiConfig = {
   apiURL: process.env.STRAPI_API_URL,
   accessToken: process.env.STRAPI_TOKEN,
-  collectionTypes: ['page'],
+  collectionTypes: ['article' ,'page'],
   singleTypes: [],
 }
 
@@ -34,5 +34,22 @@ module.exports = {
     },
     'gatsby-plugin-offline',
     `gatsby-plugin-typescript`,
+    {
+      resolve: `gatsby-omni-font-loader`,
+      options: {
+        enableListener: true,
+        preconnect: [`https://fonts.googleapis.com`, `https://fonts.gstatic.com`],
+        web: [
+          {
+            name: `Anton`,
+            file: `https://fonts.googleapis.com/css2?family=Anton&display=swap`,
+          },
+          {
+            name: `Roboto Condensed`,
+            file: `https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&display=swap" rel="stylesheet`,
+          }
+        ],
+      },
+    },
   ],
 }

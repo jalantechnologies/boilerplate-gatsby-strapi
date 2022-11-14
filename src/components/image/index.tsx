@@ -5,10 +5,11 @@ type ImagePropTypes = {
   height:number;
   src:string;
   width:number;
+  style?:React.CSSProperties;
 }
 
-export const Image: FC<ImagePropTypes> = ({className,height,src,width}) => {
+export const Image: FC<ImagePropTypes> = ({className,height,src,width,style}) => {
   return (
-    <img src={src} width={width} height={height} className={className}/>
+    <img src={src} style={style} width={width} height={height} className={className}/>
   )
 }
