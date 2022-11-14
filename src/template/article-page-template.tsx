@@ -8,38 +8,40 @@ import { ArticleServiceImpl } from '../services/page/article.service';
 
 const engine = new Styletron();
 
-const ArticlePageTemplate: React.FC = ({ pageContext }) => {
-  const [serverData, setServerData] = React.useState<any>({});
-
-  React.useEffect(() => {
-    const getData = async () => {
-      const pageObj = new ArticleServiceImpl();
-      const { data } = await pageObj.getArticlesData(pageContext.articleId);
-      setServerData(data);
-    };
-    getData();
-  }, []);
-
+const ArticlePageTemplate: React.FC = ({ serverData }) => {
   return (
     <StyletronProvider value={engine}>
       <BaseProvider theme={LightTheme}>
         <SEO
-          title={serverData?.data?.attributes?.seo[0]?.metaTitle}
-          description={serverData?.data?.attributes?.seo[0]?.metaDescription}
+          title={serverData.propData.data.attributes.seo[0].metaTitle}
+          description={
+            serverData.propData.data.attributes.seo[0].metaDescription
+          }
           metaImage={getMediaUrl(
-            serverData?.data?.attributes?.seo[0]?.metaImage.data.attributes?.url
+            serverData.propData.data.attributes.seo[0].metaImage.data.attributes
+              .url
           )}
         />
         <Hero
-          heroDesc={serverData?.data?.attributes?.description}
-          heroTitle={serverData?.data?.attributes?.title}
+          heroDesc={serverData.propData.data.attributes.description}
+          heroTitle={serverData.propData.data.attributes.title}
           imgSrc={getMediaUrl(
-            serverData?.data?.attributes?.mediaImage.data.attributes?.url
+            serverData.propData.data.attributes.mediaImage.data.attributes.url
           )}
         />
       </BaseProvider>
     </StyletronProvider>
   );
 };
+
+export async function getServerData({ pageContext }) {
+  const pageObj = new ArticleServiceImpl();
+  const { data } = await pageObj.getArticlesData(pageContext.articleId);
+  return {
+    props: {
+      propData: data,
+    },
+  };
+}
 
 export default ArticlePageTemplate;
