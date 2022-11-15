@@ -14,7 +14,7 @@ If you are new to both the tech then the documentation might help you to get fam
 
 -> Follow these process to run your strapi server
 
--> Inside your .env file in api folder, make sure to add the following keys `HOST`, `PORT`, `APP_KEYS`, `API_TOKEN_SALT`, `ADMIN_JWT_SECRET`, `JWT_SECRET`. 
+-> Copy .env.example to .env to ensure all environment variables are setup locally.
 
 ```
 cd api
@@ -29,7 +29,7 @@ yarn develop
 
 -> Make sure you are using node version >=18.0.0 while working with gatsby.
 
--> While working on develop update your .env.development and add the keys `STRAPI_API_URL`, `STRAPI_TOKEN`. While running this on your local make sure your STRAPI_API_URL is something like this http://127.0.0.1:PORT instead of http://localhost:PORT. Using localhost throws error in the local so prefer using IP address just for local.
+-> While working on develop copy .env.example file to your .env.development to ensure all environment variables are setup locally.
 
 ### `develop`
 
