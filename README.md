@@ -20,7 +20,6 @@ If you are new to both the tech then the documentation might help you to get fam
 cd api
 yarn install
 yarn develop
-
 ```
 -> You can see your strapi server working successfully on the given port
 
@@ -37,6 +36,5 @@ yarn develop
 ```
 yarn install
 yarn develop
-
 ```
 -> You can see in your browser Gatsby working successfully.
