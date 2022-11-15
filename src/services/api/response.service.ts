@@ -1,22 +1,22 @@
-import * as _ from 'lodash';
+import * as _ from 'lodash'
 
 class ServiceResponse<T> {
-  data?: T;
+ data?: T
 
-  error?: any;
+ error?: any
 
-  constructor(data?: T, error?: any) {
-    this.data = data;
-    this.error = error;
-  }
+ constructor(data?: T, error?: any) {
+  this.data = data
+  this.error = error
+ }
 
-  hasData(): boolean {
-    return !_.isNil(this.data);
-  }
+ hasData(): boolean {
+  return !_.isNil(this.data)
+ }
 
-  hasError(): boolean {
-    return !_.isEmpty(this.error);
-  }
+ hasError(): boolean {
+  return !_.isEmpty(this.error)
+ }
 }
 
-export default ServiceResponse;
+export default ServiceResponse
