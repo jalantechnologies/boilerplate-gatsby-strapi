@@ -32,8 +32,8 @@ module.exports = {
       resolve: `gatsby-source-strapi`,
       options: strapiConfig,
     },
-    'gatsby-plugin-offline',
     `gatsby-plugin-typescript`,
+    `gatsby-plugin-styled-components`,
     {
       resolve: `gatsby-omni-font-loader`,
       options: {

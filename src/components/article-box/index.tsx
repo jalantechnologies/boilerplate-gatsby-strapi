@@ -1,6 +1,5 @@
 import * as React from 'react'
 import { Block } from 'baseui/block'
-import { DisplayXSmall } from 'baseui/typography'
 import { Image } from '../image'
 import { navigate } from 'gatsby'
 import './styles/style.css'
@@ -22,7 +21,7 @@ export const ArticleBox: React.FC<ArticleBoxProps> = ({id, title, imgSrc }) => {
         className='boxImg'
         style={{ borderRadius: 10 }}
       />
-      <DisplayXSmall className="title-text">{title}</DisplayXSmall>
+      <Block className="title-text">{title}</Block>
     </Block>
   )
 }

@@ -26,6 +26,7 @@ exports.createPages = async ({ graphql, actions }) => {
       context: {
         articleId:edge.id,
       },
+      defer:true
     })
   })
 }

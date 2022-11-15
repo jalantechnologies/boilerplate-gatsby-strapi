@@ -1,6 +1,8 @@
 .title-text {
   margin-top: 20px;
   font-family: 'Roboto Condensed';
+  font-weight: 500;
+  font-size: 30px;
 }
 
 .article-card {
@@ -10,12 +12,13 @@
   width: 500px;
   cursor: pointer;
   margin-top: 20;
+  margin-right: 100;
 }
 
 .boxImg {
     transition: 0.5s all ease-in-out;
 }
-  
+
 .boxImg:hover {
     transform: scale(1.1);
 }
