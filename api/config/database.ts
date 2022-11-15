@@ -1,16 +1,11 @@
-import path from 'path'
+import path from 'path';
 
 export default ({ env }) => ({
- connection: {
-  client: 'sqlite',
   connection: {
-   filename: path.join(
-    __dirname,
-    '..',
-    '..',
-    env('DATABASE_FILENAME', '.tmp/data.db'),
-   ),
+    client: 'sqlite',
+    connection: {
+      filename: path.join(__dirname, '..', '..', env('DATABASE_FILENAME')),
+    },
+    useNullAsDefault: true,
   },
-  useNullAsDefault: true,
- },
-})
+});

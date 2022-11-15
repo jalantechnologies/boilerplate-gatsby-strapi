@@ -10,15 +10,16 @@
   flex-direction: column;
   align-content: center;
   width: 500px;
+  height: 400px;
   cursor: pointer;
-  margin-top: 20;
-  margin-right: 100;
+  margin-top: 20px;
+  margin-right: 100px;
 }
 
-.boxImg {
-    transition: 0.5s all ease-in-out;
+.article-card-img {
+  transition: 0.5s all ease-in-out;
 }
 
-.boxImg:hover {
-    transform: scale(1.1);
+.article-card-img:hover {
+  transform: scale(1.1);
 }
