@@ -1,5 +1,5 @@
 {
-  "name": "sunnyenergy-website-strapi",
+  "name": "jtc-strapi-boilerplate",
   "private": true,
   "engines": {
     "node": ">=14.19.1 <=18.x.x",
@@ -30,10 +30,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Sunny-Energy-AZ/sunny-energy-website.git"
+    "url": "git+https://github.com/jalantechnologies/boilerplate-gatsby-strapi.git"
   },
   "bugs": {
-    "url": "https://github.com/Sunny-Energy-AZ/sunny-energy-website/issues"
+    "url": "https://github.com/jalantechnologies/boilerplate-gatsby-strapi/issues"
   },
-  "homepage": "https://github.com/Sunny-Energy-AZ/sunny-energy-website#readme"
+  "homepage": "https://github.com/jalantechnologies/boilerplate-gatsby-strapi#readme"
 }

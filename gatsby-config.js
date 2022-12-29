@@ -17,8 +17,8 @@ const strapiConfig = {
 
 module.exports = {
   siteMetadata: {
-    title: 'Sunny Energy | Best Solar Company In Arizona',
-    siteUrl: 'https://www.sunnyenergysolar.com',
+    title: 'JTC | Website boilerplate',
+    siteUrl: 'https://jalantechnologies.com',
   },
   plugins: [
     {

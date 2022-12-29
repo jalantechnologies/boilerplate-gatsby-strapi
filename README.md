@@ -1,4 +1,4 @@
-# Sunny Energy - Website
+# JTC - Gatsby / Strapi Boilerplate
 
 This documents steps to get both frontend (gatsby) and backend (strapi) working locally
 If you are new to both the tech then the documentation might help you to get familiar regarding both the tech-stack
@@ -47,16 +47,14 @@ yarn develop
 
     - `export const pages = [
       {
-      name: home-page',
-      getData: getHomePage,
+        name: home-page',
+        getData: getHomePage,
+        isCollection: false
       },
       {
-      name: 'video',
-      getData: getVideoLibrary,
-      },
-      {
-      name: 'referral',
-      getData: getReferral,
+        name: 'article',
+        getData: getVideoLibrary,
+        isCollection: true
       },
       ];`
 - In above pages **name** is the page name created in strapi and **getData** is a function which will return data in below format below is sample data
@@ -66,8 +64,8 @@ yarn develop
       "updatedAt": "2022-12-16T11:59:47.825Z",
       "publishedAt": "2022-12-16T11:59:47.825Z",
       "Seo": {
-      "Title": "Sunny Energy",
-      "Description": "Sunny Energy is the leading solar energy company in Arizona. We’ve installed thousands of solar systems for residential customers.  ",
+      "Title": "JTC",
+      "Description": "Some description about website",
       "Favicon": 1,
       "Metas": [
       {
@@ -83,12 +81,13 @@ yarn develop
 - In above example Favicon is image id of strapi that you can get from
   const favIcon = await uploadFile('favicon.png');
 - Now you can get image id as favIcon[0].id
-- To check newly added page **remove ./api/.tm/data.db** and run **yarn develop**
+- To check newly added page drop db from postgres and recreate using **drop database "website-dev" WITH (FORCE);** and run **create database "website-staging-2";**
+- run **yarn develop**
 
 ### Generating API token for Frontend
 
 - Navigate to strapi admin page - `http://localhost:1337/admin`
-- Login using `STRAPI_ADMIN_EMAIL` and `STRAPI_ADMIN_PASSWORD` (By default it's set to `sunnyenergy@jalantechnologies.com` / `password`)
+- Login using `STRAPI_ADMIN_EMAIL` and `STRAPI_ADMIN_PASSWORD` (By default it's set to `admin@jalantechnologies.com` / `password`)
 - Navigate - `Settings` > `API Tokens`
 - Select - `Create new API token`
 - Provide name, duration as `Unlimited`, token type `Full access`
