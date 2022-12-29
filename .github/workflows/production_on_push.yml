@@ -1,0 +1,54 @@
+name: production_on_push
+
+on:
+  push:
+    branches:
+      - main
+
+concurrency:
+  group: ci-production-${{ github.event.ref }}
+  cancel-in-progress: true
+
+jobs:
+  production_backend:
+    uses: jalantechnologies/platform-github/.github/workflows/kube.yml@v2.5
+    with:
+      app_name: website-backend
+      app_env: production
+      app_hostname: 'website-backend.test.sunnyenergysolar.com'
+      branch: ${{ github.event.ref }}
+      build_args: |
+        CI=true
+        NODE_ENV=production
+      build_context: 'api'
+      deploy_root: 'lib/kube/backend'
+      steps: 'deploy'
+    secrets:
+      docker_registry: docker-registry.sunnyenergysolar.com/sunny-energy-website
+      docker_username: ${{ secrets.DOCKER_USERNAME }}
+      docker_password: ${{ secrets.DOCKER_PASSWORD }}
+      doppler_token: ${{ secrets.DOPPLER_PRODUCTION_TOKEN }}
+      do_access_token: ${{ secrets.DO_ACCESS_TOKEN }}
+      do_cluster_id: ${{ secrets.DO_CLUSTER_ID }}
+
+  production_frontend:
+    uses: jalantechnologies/platform-github/.github/workflows/kube.yml@v2.5
+    needs: 'production_backend'
+    with:
+      app_name: website-frontend
+      app_env: production
+      app_hostname: 'website.test.sunnyenergysolar.com'
+      branch: ${{ github.event.ref }}
+      build_args: |
+        CI=true
+        NODE_ENV=production
+        STRAPI_API_URL=${{ needs.production_backend.outputs.deploy_url }}
+        STRAPI_TOKEN=c5ed9d350013a16b6bbc24068f495fd36ee927cbd137054469505ef1160a4c406dd8b7c3276fa1b98e431bb0c90d865778308d5e9e4b370f2ab9e04b7fb17e45873819fde04863daff4bad1a4136d4066621efb62dbf37b1d764e437924cf72c6351c24743beb0a6a52c78909e07647f755e3758a4b4d329258e40d15c13188e
+      deploy_root: 'lib/kube/frontend'
+      steps: 'deploy'
+    secrets:
+      docker_registry: docker-registry.sunnyenergysolar.com/sunny-energy-website
+      docker_username: ${{ secrets.DOCKER_USERNAME }}
+      docker_password: ${{ secrets.DOCKER_PASSWORD }}
+      do_access_token: ${{ secrets.DO_ACCESS_TOKEN }}
+      do_cluster_id: ${{ secrets.DO_CLUSTER_ID }}

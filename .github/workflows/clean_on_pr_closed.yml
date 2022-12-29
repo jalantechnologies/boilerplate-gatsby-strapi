@@ -1,0 +1,30 @@
+name: clean_on_pr_closed
+
+on:
+  pull_request:
+    types: [ closed ]
+
+concurrency:
+  group: ci-preview-${{ github.event.pull_request.head.ref }}
+  cancel-in-progress: true
+
+jobs:
+  clean_backend:
+    uses: jalantechnologies/platform-github/.github/workflows/clean.yml@v2.5
+    with:
+      app_name: website-backend
+      app_env: preview
+      branch: ${{ github.event.pull_request.head.ref }}
+    secrets:
+      do_access_token: ${{ secrets.DO_ACCESS_TOKEN }}
+      do_cluster_id: ${{ secrets.DO_CLUSTER_ID }}
+
+  clean_frontend:
+    uses: jalantechnologies/platform-github/.github/workflows/clean.yml@v2.5
+    with:
+      app_name: website-frontend
+      app_env: preview
+      branch: ${{ github.event.pull_request.head.ref }}
+    secrets:
+      do_access_token: ${{ secrets.DO_ACCESS_TOKEN }}
+      do_cluster_id: ${{ secrets.DO_CLUSTER_ID }}

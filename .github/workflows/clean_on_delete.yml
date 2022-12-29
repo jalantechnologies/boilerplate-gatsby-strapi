@@ -1,0 +1,32 @@
+name: clean_on_delete
+
+on: delete
+
+concurrency:
+  group: ci-preview-${{ github.event.ref }}
+  cancel-in-progress: true
+
+jobs:
+  clean_backend:
+    uses: jalantechnologies/platform-github/.github/workflows/clean.yml@v2.5
+    # only run when deleting a branch
+    if: github.event.ref_type == 'branch'
+    with:
+      app_name: website-backend
+      app_env: preview
+      branch: ${{ github.event.ref }}
+    secrets:
+      do_access_token: ${{ secrets.DO_ACCESS_TOKEN }}
+      do_cluster_id: ${{ secrets.DO_CLUSTER_ID }}
+
+  clean_frontend:
+    uses: jalantechnologies/platform-github/.github/workflows/clean.yml@v2.5
+    # only run when deleting a branch
+    if: github.event.ref_type == 'branch'
+    with:
+      app_name: website-frontend
+      app_env: preview
+      branch: ${{ github.event.ref }}
+    secrets:
+      do_access_token: ${{ secrets.DO_ACCESS_TOKEN }}
+      do_cluster_id: ${{ secrets.DO_CLUSTER_ID }}

@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: $KUBE_APP-deployment
+  namespace: $KUBE_NS
+  labels:
+    app: $KUBE_APP
+    version: $GITHUB_SHA
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: $KUBE_APP
+  template:
+    metadata:
+      labels:
+        app: $KUBE_APP
+    spec:
+      imagePullSecrets:
+        - name: regcred
+      containers:
+        - name: $KUBE_APP
+          image: $KUBE_DEPLOYMENT_IMAGE
+          imagePullPolicy: Always
+          command: [ 'yarn', 'serve' ]
+          args: [ '--host', '0.0.0.0', '--port', '9000' ]
+          ports:
+            - containerPort: 9000
+          env:
+            - name: NODE_ENV
+              value: 'production'

@@ -5,6 +5,8 @@ class ServiceResponse<T> {
 
   error?: any;
 
+  meta?: any;
+
   constructor(data?: T, error?: any) {
     this.data = data;
     this.error = error;

@@ -1,0 +1,7 @@
+# this file simply extends the gitignore with few exceptions
+
+# dependency directories
+node_modules
+
+# distribution
+dist

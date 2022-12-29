@@ -1,14 +1,15 @@
 {
   "collectionName": "components_meta_metas",
   "info": {
-    "displayName": "meta"
+    "displayName": "meta",
+    "description": ""
   },
   "options": {},
   "attributes": {
-    "name": {
+    "Name": {
       "type": "string"
     },
-    "content": {
+    "Content": {
       "type": "text"
     }
   }

@@ -4,3 +4,5 @@ export const getRouteUrl = (title: string): string => {
     .join('-')
     .toLowerCase();
 };
+
+export const getArticleUrl = (title: string) => `/articles/${getRouteUrl(title)}`;

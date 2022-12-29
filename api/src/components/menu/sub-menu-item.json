@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_menu_item_sub_menu_items",
+  "info": {
+    "displayName": "Submenus",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "Label": {
+      "type": "string",
+      "required": true
+    },
+    "Url": {
+      "type": "string",
+      "required": true
+    },
+    "Target": {
+      "type": "string"
+    }
+  }
+}

@@ -1,11 +1,18 @@
-import path from 'path';
-
-export default ({ env }) => ({
+module.exports = ({ env }) => ({
   connection: {
-    client: 'sqlite',
+    client: 'postgres',
     connection: {
-      filename: path.join(__dirname, '..', '..', env('DATABASE_FILENAME')),
+      host: env('DATABASE_HOST'),
+      port: env.int('DATABASE_PORT'),
+      database: env('DATABASE_NAME'),
+      user: env('DATABASE_USERNAME'),
+      password: env('DATABASE_PASSWORD'),
+      // see - https://docs.strapi.io/developer-docs/latest/setup-deployment-guides/configurations/required/databases.html#configuration-structure
+      // info - database ssl is turned off in non-production env
+      ssl: env('NODE_ENV') !== 'production' ? false : {
+        rejectUnauthorized: env.bool('DATABASE_SSL_SELF', false), // For self-signed certificates
+      },
     },
-    useNullAsDefault: true,
+    debug: false,
   },
 });

@@ -1,3 +1,6 @@
 export const getMediaUrl = (url: string): string => {
-  return process.env.STRAPI_API_URL + url;
+  const isProdEnv = process.env.NODE_ENV === 'production'
+  const apiUrl = process.env.STRAPI_API_URL
+
+  return isProdEnv ? url : `${apiUrl}${url}`;
 };

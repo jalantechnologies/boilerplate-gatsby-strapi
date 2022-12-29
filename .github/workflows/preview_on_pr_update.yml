@@ -1,0 +1,61 @@
+name: preview_on_pr_update
+
+on:
+  pull_request:
+    types: [ opened, synchronize, reopened ]
+
+concurrency:
+  group: ci-preview-${{ github.event.pull_request.head.ref }}
+  cancel-in-progress: true
+
+jobs:
+  preview_backend:
+    uses: jalantechnologies/platform-github/.github/workflows/kube.yml@v2.5
+    # only run when updating an 'Open' PR
+    if: github.event.pull_request.state == 'open'
+    with:
+      app_name: website-backend
+      app_env: preview
+      app_hostname: '{1}-website-backend.preview.sunnyenergysolar.com'
+      branch: ${{ github.event.pull_request.head.ref }}
+      branch_base: ${{ github.event.pull_request.base.ref }}
+      build_context: 'api'
+      build_args: |
+        CI=true
+        NODE_ENV=production
+      deploy_root: 'lib/kube/backend'
+      pull_request_number: ${{ github.event.number }}
+      steps: 'deploy'
+    secrets:
+      docker_registry: docker-registry.sunnyenergysolar.com/sunny-energy-website
+      docker_username: ${{ secrets.DOCKER_USERNAME }}
+      docker_password: ${{ secrets.DOCKER_PASSWORD }}
+      doppler_token: ${{ secrets.DOPPLER_PREVIEW_TOKEN }}
+      do_access_token: ${{ secrets.DO_ACCESS_TOKEN }}
+      do_cluster_id: ${{ secrets.DO_CLUSTER_ID }}
+
+  preview_frontend:
+    uses: jalantechnologies/platform-github/.github/workflows/kube.yml@v2.5
+    needs: 'preview_backend'
+    # only run when updating an 'Open' PR
+    if: github.event.pull_request.state == 'open'
+    with:
+      app_name: website-frontend
+      app_env: preview
+      app_hostname: '{1}-website.preview.sunnyenergysolar.com'
+      branch: ${{ github.event.pull_request.head.ref }}
+      branch_base: ${{ github.event.pull_request.base.ref }}
+      build_args: |
+        CI=true
+        NODE_ENV=production
+        STRAPI_API_URL=${{ needs.preview_backend.outputs.deploy_url }}
+        STRAPI_TOKEN=5e7a70034ee3872391ecc4f8d58862239fd5275e3e4c6ee33a1fbd0d5b6866477123167b94aa1e7607cb073528b3e10068f5a681242476f8100d23f47f9297e1221e89f562a7e1b8049b991b47333b373e3219794c0c4b89a17a85bd2e4f0bfcdfcbc94665700b9a063cf3f60797f9cd26bac0c5aa2a215f29f74a675b8aac8a
+      deploy_root: 'lib/kube/frontend'
+      pull_request_number: ${{ github.event.number }}
+      steps: 'deploy'
+    secrets:
+      docker_registry: docker-registry.sunnyenergysolar.com/sunny-energy-website
+      docker_username: ${{ secrets.DOCKER_USERNAME }}
+      docker_password: ${{ secrets.DOCKER_PASSWORD }}
+      do_access_token: ${{ secrets.DO_ACCESS_TOKEN }}
+      do_cluster_id: ${{ secrets.DO_CLUSTER_ID }}

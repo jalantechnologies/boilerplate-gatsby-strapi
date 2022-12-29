@@ -7,21 +7,27 @@
   },
   "options": {},
   "attributes": {
-    "metaTitle": {
+    "Title": {
       "type": "string"
     },
-    "metaDescription": {
+    "Description": {
       "type": "text"
     },
-    "metaImage": {
+    "Favicon": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
+    },
+    "Metas": {
+      "type": "component",
+      "repeatable": true,
+      "component": "meta.meta"
     }
   }
 }

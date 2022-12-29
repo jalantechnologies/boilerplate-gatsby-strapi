@@ -4,10 +4,7 @@ import { ArtilceService } from './article.interface';
 
 export class ArticleServiceImpl extends APIServiceImpl
   implements ArtilceService {
-  constructor() {
-    super();
-  }
-  static readonly GET_ARTICLE_API = `${process.env.STRAPI_API_URL}/api/articles/:id?populate=mediaImage,seo,seo.metaImage`;
+  static readonly GET_ARTICLE_API = `${process.env.STRAPI_API_URL}/api/articles/:id?populate=mediaImage,Seo,Seo.Favicon`;
 
   async getArticlesData(pageId: string): Promise<ServiceResponse<any>> {
     try {
