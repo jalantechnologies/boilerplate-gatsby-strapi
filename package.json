@@ -1,6 +1,5 @@
 {
-  "name": "jtc-gatsby-boilerplate",
-  "private": "true",
+  "name": "gatsby-boilerplate-frontend",
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop",

@@ -1,4 +1,4 @@
-# JTC - Gatsby / Strapi Boilerplate
+# Gatsby / Strapi Boilerplate
 
 This documents steps to get both frontend (gatsby) and backend (strapi) working locally
 If you are new to both the tech then the documentation might help you to get familiar regarding both the tech-stack
