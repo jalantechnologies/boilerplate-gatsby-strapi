@@ -12,7 +12,7 @@ jobs:
     with:
       app_name: boilerplate-website-backend
       app_env: preview
-      app_hostname: '{1}-website-backend.preview.platform.jalantechnologies.com'
+      app_hostname: '{1}-backend.preview.platform.jalantechnologies.com'
       branch: ${{ github.event.ref }}
       build_context: 'api'
       build_args: |
