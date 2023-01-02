@@ -10,9 +10,9 @@ jobs:
   preview_backend:
     uses: jalantechnologies/platform-github/.github/workflows/kube.yml@v2.5
     with:
-      app_name: website-backend
+      app_name: boilerplate-website-backend
       app_env: preview
-      app_hostname: '{1}-website-backend.preview.sunnyenergysolar.com'
+      app_hostname: '{1}-website-backend.preview.platform.jalantechnologies.com'
       branch: ${{ github.event.ref }}
       build_context: 'api'
       build_args: |
@@ -21,7 +21,7 @@ jobs:
       deploy_root: 'lib/kube/backend'
       steps: 'deploy'
     secrets:
-      docker_registry: docker-registry.sunnyenergysolar.com/sunny-energy-website
+      docker_registry: docker-registry.platform.jalantechnologies.com/boilerplate-website
       docker_username: ${{ secrets.DOCKER_USERNAME }}
       docker_password: ${{ secrets.DOCKER_PASSWORD }}
       doppler_token: ${{ secrets.DOPPLER_PREVIEW_TOKEN }}
@@ -32,9 +32,9 @@ jobs:
     uses: jalantechnologies/platform-github/.github/workflows/kube.yml@v2.5
     needs: 'preview_backend'
     with:
-      app_name: website-frontend
+      app_name: boilerplate-website-frontend
       app_env: preview
-      app_hostname: '{1}-website.preview.sunnyenergysolar.com'
+      app_hostname: '{1}-website.preview.platform.jalantechnologies.com'
       branch: ${{ github.event.ref }}
       build_args: |
         CI=true
@@ -44,7 +44,7 @@ jobs:
       deploy_root: 'lib/kube/frontend'
       steps: 'deploy'
     secrets:
-      docker_registry: docker-registry.sunnyenergysolar.com/sunny-energy-website
+      docker_registry: docker-registry.platform.jalantechnologies.com/boilerplate-website
       docker_username: ${{ secrets.DOCKER_USERNAME }}
       docker_password: ${{ secrets.DOCKER_PASSWORD }}
       do_access_token: ${{ secrets.DO_ACCESS_TOKEN }}

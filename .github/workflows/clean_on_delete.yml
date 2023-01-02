@@ -12,7 +12,7 @@ jobs:
     # only run when deleting a branch
     if: github.event.ref_type == 'branch'
     with:
-      app_name: website-backend
+      app_name: boilerplate-website-backend
       app_env: preview
       branch: ${{ github.event.ref }}
     secrets:
@@ -24,7 +24,7 @@ jobs:
     # only run when deleting a branch
     if: github.event.ref_type == 'branch'
     with:
-      app_name: website-frontend
+      app_name: boilerplate-website-frontend
       app_env: preview
       branch: ${{ github.event.ref }}
     secrets:
