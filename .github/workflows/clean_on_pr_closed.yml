@@ -12,7 +12,7 @@ jobs:
   clean_backend:
     uses: jalantechnologies/platform-github/.github/workflows/clean.yml@v2.5
     with:
-      app_name: website-backend
+      app_name: boilerplate-website-backend
       app_env: preview
       branch: ${{ github.event.pull_request.head.ref }}
     secrets:
@@ -22,7 +22,7 @@ jobs:
   clean_frontend:
     uses: jalantechnologies/platform-github/.github/workflows/clean.yml@v2.5
     with:
-      app_name: website-frontend
+      app_name: boilerplate-website-frontend
       app_env: preview
       branch: ${{ github.event.pull_request.head.ref }}
     secrets:
