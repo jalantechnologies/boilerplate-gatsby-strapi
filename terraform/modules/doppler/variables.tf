@@ -1,4 +1,9 @@
-variable "token" {
-  type        = string
-  description = "Personal access token for Doppler account"
+variable "backend_preview_secrets" {
+  type    = map
+  default = {}
+}
+
+variable "backend_production_secrets" {
+  type    = map
+  default = {}
 }
