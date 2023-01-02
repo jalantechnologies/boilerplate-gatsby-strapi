@@ -79,11 +79,15 @@ const roles = {
 let intervalId: NodeJS.Timeout;
 let isDataSet: boolean;
 
+const strapiEndpoint = process.env.STRAPI_APP_HOST
+  ? `https://${process.env.STRAPI_APP_HOST}`
+  : `http://localhost:${process.env.PORT}`
+
 const getToken = async (count: number) => {
   try {
     if (count > 9 || isDataSet) return;
     clearInterval(intervalId);
-    const loginRes = await axios.post('http://localhost:1337/admin/login', {
+    const loginRes = await axios.post(`${strapiEndpoint}/admin/login`, {
       email: process.env.STRAPI_ADMIN_EMAIL,
       password: process.env.STRAPI_ADMIN_PASSWORD,
     });
@@ -99,7 +103,7 @@ const getToken = async (count: number) => {
 const addPermission = async token => {
   try {
     const loginRes = await axios.put(
-      ' http://localhost:1337/users-permissions/roles/2',
+      `${strapiEndpoint}/users-permissions/roles/2`,
       roles,
       {
         headers: {
