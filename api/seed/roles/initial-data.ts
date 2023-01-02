@@ -113,16 +113,28 @@ const addPermission = async token => {
   }
 };
 
-export const setInitialRole = async (pages: string[]) => {
+const collectionPermissions = {
+  find: { enabled: true, policy: '' },
+  findOne: { enabled: true, policy: '' },
+  create: { enabled: true, policy: '' },
+  update: { enabled: true, policy: '' },
+  delete: { enabled: true, policy: '' },
+};
+
+const singlePermissions = {
+  find: { enabled: true, policy: '' },
+  update: { enabled: false, policy: '' },
+  delete: { enabled: false, policy: '' },
+};
+
+export const setInitialRole = async pages => {
   pages.map(
     page =>
-      (roles.permissions[`api::${page}`] = {
+      (roles.permissions[`api::${page.name}`] = {
         controllers: {
-          [page]: {
-            find: { enabled: true, policy: '' },
-            update: { enabled: false, policy: '' },
-            delete: { enabled: false, policy: '' },
-          },
+          [page.name]: page.isCollection
+            ? collectionPermissions
+            : singlePermissions,
         },
       }),
   );

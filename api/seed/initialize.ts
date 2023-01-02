@@ -32,7 +32,7 @@ export const startInitialization = async strapi => {
     await addData(pages, 0);
 
     console.log('strapi::init - initializing roles');
-    await setInitialRole(pages.map(page => page.name));
+    await setInitialRole(pages);
 
     console.log(
       `strapi::init - completed, email - ${process.env.STRAPI_ADMIN_EMAIL}, password - ${process.env.STRAPI_ADMIN_PASSWORD}`,
