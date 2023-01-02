@@ -2,7 +2,7 @@ import fs from 'fs';
 import '@strapi/strapi';
 
 export const getFileInfo = fileName => {
-  const path = `./seed/data/uploads/${fileName}`;
+  const path = `./seed/uploads/${fileName}`;
   const fileStat = fs.statSync(path);
   const array = path.split('.');
   const ext = array[array.length - 1];
@@ -45,7 +45,7 @@ export const uploadFile = async name => {
       },
     });
   } catch (e) {
-    console.log(e)
+    console.log(e);
   }
 
   return null;
