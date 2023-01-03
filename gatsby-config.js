@@ -27,10 +27,6 @@ module.exports = {
         prefix: '_',
       },
     },
-    {
-      resolve: 'gatsby-source-strapi',
-      options: strapiConfig,
-    },
     'gatsby-plugin-image',
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-sharp',
